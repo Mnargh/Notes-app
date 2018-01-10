@@ -4,13 +4,9 @@
 // selecteddiv.innerHTML = "Fuck you Charles";
 
   (function(exports) {
-    function Controller(notepad = new Notepad()) {
+    function Controller(notepad = new Notepad(), notelistview = new NotelistView(notepad)) {
       this.notepad = notepad;
-      this.notepad.createNote("Favourite drink: seltzer");
-      this.notepad.createNote("Chuppa chuuups");
-      this.notepad.createNote("Pesto");
-
-      this.notelistview = new Notelist(this.notepad);
+      this.notelistview = notelistview;
     };
 
     Controller.prototype.getHTML = function(elementID){
@@ -23,6 +19,8 @@
 window.onload = function(){
 
 controller = new Controller();
+controller.notepad.createNote("Favourite drink: seltzer");
+controller.notepad.createNote("Pesto");
 controller.getHTML('app');
 
 };
