@@ -5,9 +5,9 @@ function testControllerIsInstantiated(){
   function FakeNotepad(){};
 
   FakeNotepad.prototype = {
-    returnNotes: function() {
-      return ["This is note 1"];
-    }
+    // returnNotes: function() {
+    //   // return ["This is note 1"];
+    // }
   };
 
   function FakeNoteListView(){};

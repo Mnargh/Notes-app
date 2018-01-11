@@ -6,8 +6,13 @@ function testNotepadCreation() {
 testNotepadCreation();
 
 function testAddNoteToNotePad() {
+
+  function FakeNote(description){
+    this.description = description;
+  };
+
   var notepad = new Notepad();
-  var note = new Note();
+  var note = new FakeNote();
   notepad.addNote(note);
   assert.isTrue("Note is added to notepad",notepad.notes[0] === note);
 };
@@ -15,9 +20,14 @@ function testAddNoteToNotePad() {
 testAddNoteToNotePad();
 
 function testReturnNotes(){
+
+  function FakeNote(description){
+    this.description = description;
+  };
+
   var notepad = new Notepad();
-  var note1 = new Note("Hi Keran");
-  var note2 = new Note("Hi Tom");
+  var note1 = new FakeNote("Hi Keran");
+  var note2 = new FakeNote("Hi Tom");
   notepad.addNote(note1);
   notepad.addNote(note2);
   var test = notepad.returnNotes();

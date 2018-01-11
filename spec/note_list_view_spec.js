@@ -7,8 +7,13 @@ function testNoteListViewContainsNotePad() {
 testNoteListViewContainsNotePad();
 
 function testReturnsNoteListView() {
-  var note1 = new Note("Hi Keran");
-  var note2 = new Note("Hi Tom");
+
+  function FakeNote(description){
+    this.description = description;
+  };
+
+  var note1 = new FakeNote("Hi Keran");
+  var note2 = new FakeNote("Hi Tom");
   var notepad = new Notepad();
   notepad.addNote(note1);
   notepad.addNote(note2);
@@ -18,3 +23,21 @@ function testReturnsNoteListView() {
 };
 
 testReturnsNoteListView();
+
+function testReturnsNoteListViewWith20Chars() {
+
+  function FakeNote(description){
+    this.description = description;
+  };
+  
+  var note1 = new FakeNote("asdfgasdfgasdfgasdfgqwert");
+  var note2 = new FakeNote("asdfgasdfgasdfgasdfgpoiuypoiuy poiuypoiuypoiuy");
+  var notepad = new Notepad();
+  notepad.addNote(note1);
+  notepad.addNote(note2);
+  var notelistview = new NotelistView(notepad);
+  var test = notelistview.returnToHTML();
+  assert.isTrue("Limits notes to 20 characters", test === "<ul><li>asdfgasdfgasdfgasdfg</li><li>asdfgasdfgasdfgasdfg</li></ul>")
+};
+
+testReturnsNoteListViewWith20Chars();
