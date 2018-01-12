@@ -9,14 +9,29 @@
       this.notelistview = notelistview;
     };
 
-    // Controller.prototype.
-
     Controller.prototype.getHTML = function(elementID){
       document.getElementById(elementID).innerHTML = this.notelistview.returnToHTML();
     };
 
     exports.Controller = Controller;
   })(this);
+
+function makeURLChangeNoteForCurrentPage(){
+  window.addEventListener("hashchange", showNoteForCurrentPage);
+};
+
+function showNoteForCurrentPage() {
+  showNote(window.location.hash.split("#notes/")[1]);
+};
+
+function showNote(noteID) {
+  var singlenotehtml = new SingleNoteView(controller.notepad.getNoteByID(parseInt(noteID)))
+
+  document.getElementById("app").innerHTML = singlenotehtml.returnNoteHTML();
+};
+
+
+
 
 window.onload = function(){
 
@@ -25,10 +40,27 @@ controller.notepad.createNote("Favourite drink: seltzer");
 controller.notepad.createNote("Pesto");
 controller.getHTML('app');
 
+makeURLChangeNoteForCurrentPage();
+
 };
 
-/* testing
 
-test new controller is instatiated
-
-mock the element by creating a fake div with id app*/
+     // makeUrlChangeShowAnimalForCurrentPage();
+     //
+     // function makeUrlChangeShowAnimalForCurrentPage() {
+     //   window.addEventListener("hashchange", showAnimalForCurrentPage);
+     // };
+     //
+     // function showAnimalForCurrentPage() {
+     //   showAnimal(getAnimalFromUrl(window.location));
+     // };
+     //
+     // function getAnimalFromUrl(location) {
+     //   return location.hash.split("#")[1];
+     // };
+     //
+     // function showAnimal(animal) {
+     //   document
+     //     .getElementById("animal")
+     //     .innerHTML = animal;
+     // };
