@@ -8,36 +8,40 @@ testNoteListViewContainsNotePad();
 
 function testReturnsNoteListView() {
 
-  function FakeNote(description){
+  function FakeNote(description, id){
     this.description = description;
+    this.id  = id;
   };
 
-  var note1 = new FakeNote("Hi Keran");
-  var note2 = new FakeNote("Hi Tom");
+  var note1 = new FakeNote("Hi Keran", 0);
+  var note2 = new FakeNote("Hi Tom", 1);
   var notepad = new Notepad();
   notepad.addNote(note1);
   notepad.addNote(note2);
   var notelistview = new NotelistView(notepad);
   var test = notelistview.returnToHTML();
-  assert.isTrue("Returning notes", test === "<ul><li>Hi Keran</li><li>Hi Tom</li></ul>")
+  assert.isTrue("Returning notes", test === '<ul><li><a href="#notes/0">Hi Keran</a></li><li><a href="#notes/1">Hi Tom</a></li></ul>')
+
 };
 
 testReturnsNoteListView();
 
 function testReturnsNoteListViewWith20Chars() {
 
-  function FakeNote(description){
+  function FakeNote(description, id){
     this.description = description;
+    this.id  = id;
   };
-  
-  var note1 = new FakeNote("asdfgasdfgasdfgasdfgqwert");
-  var note2 = new FakeNote("asdfgasdfgasdfgasdfgpoiuypoiuy poiuypoiuypoiuy");
+
+  var note1 = new FakeNote("asdfgasdfgasdfgasdfgqwert", 0);
+  var note2 = new FakeNote("asdfgasdfgasdfgasdfgpoiuypoiuy poiuypoiuypoiuy", 1);
   var notepad = new Notepad();
   notepad.addNote(note1);
   notepad.addNote(note2);
   var notelistview = new NotelistView(notepad);
   var test = notelistview.returnToHTML();
-  assert.isTrue("Limits notes to 20 characters", test === "<ul><li>asdfgasdfgasdfgasdfg</li><li>asdfgasdfgasdfgasdfg</li></ul>")
+  assert.isTrue("Limits notes to 20 characters", test === '<ul><li><a href="#notes/0">asdfgasdfgasdfgasdfg</a></li><li><a href="#notes/1">asdfgasdfgasdfgasdfg</a></li></ul>')
+
 };
 
 testReturnsNoteListViewWith20Chars();

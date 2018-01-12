@@ -9,6 +9,8 @@
       this.notelistview = notelistview;
     };
 
+    // Controller.prototype.
+
     Controller.prototype.getHTML = function(elementID){
       document.getElementById(elementID).innerHTML = this.notelistview.returnToHTML();
     };
