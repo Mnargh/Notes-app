@@ -14,8 +14,8 @@ function testSingleNoteViewReturnsNoteHTML() {
   var singlenoteview = new SingleNoteView(new FakeNote());
 
 
-  returnedhtml = singlenoteview.ReturnNoteHTML();
-  assert.isTrue("SingleNoteView returns string of HTML from note model", returnedhtml  === "<li>This is a note</li>");
+  returnedhtml = singlenoteview.returnNoteHTML();
+  assert.isTrue("SingleNoteView returns string of HTML from note model", returnedhtml  === "<div>This is a note</div>");
 };
 
 testSingleNoteViewReturnsNoteHTML();

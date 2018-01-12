@@ -6,41 +6,39 @@ function testNoteCreation() {
 
 testNoteCreation();
 
-// function testEachNoteIDs() {
-//
-// 
-//   (function(exports) {
-//     function FakeNoteID(){
-//       this.id = 0
-//     };
-//
-//     FakeNoteID.prototype.initID = function(){
-//       this.id = 0;
-//     };
-//
-//     FakeNoteID.prototype.increaseIDnumber = function(){
-//       this.id ++;
-//     };
-//
-//     FakeNoteID.prototype.getIDnumber = function(){
-//       return this.id;
-//     };
-//
-//     exports.FakeNoteID = FakeNoteID;
-//   })(this);
-//
-//
-//
-//
-//
-//   var FakeNoteID = new FakeNoteID();
-//
-//   var note1 = new Note("This is the first note", FakeNoteID);
-//   var note2 = new Note("This is the second note", FakeNoteID);
-//
-//
-//   assert.isTrue("First note created has an ID of 0", note1.id === 0);
-//   assert.isTrue("Second ntoe created has an ID of 1", note2.id === 1);
-// };
-//
-// testEachNoteIDs();
+function testEachNoteIDs() {
+
+
+  // (function(exports) {
+  //   function FakeNoteID(){
+  //     this.id = 0
+  //   };
+  //
+  //   FakeNoteID.prototype.initID = function(){
+  //     this.id = 0;
+  //   };
+  //
+  //   FakeNoteID.prototype.increaseIDnumber = function(){
+  //     this.id ++;
+  //   };
+  //
+  //   FakeNoteID.prototype.getIDnumber = function(){
+  //     return this.id;
+  //   };
+  //
+  //   exports.FakeNoteID = FakeNoteID;
+  // })(this);
+  //
+  // var FakeNoteID = new FakeNoteID();
+
+  // need to stub?
+
+  var note1 = new Note("This is the first note");
+  var note2 = new Note("This is the second note");
+
+
+  assert.isTrue("First note created has an ID of 0", note1.id === 1);
+  assert.isTrue("Second ntoe created has an ID of 1", note2.id === 2);
+};
+
+testEachNoteIDs();

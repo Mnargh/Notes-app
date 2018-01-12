@@ -36,3 +36,25 @@ function testReturnNotes(){
 };
 
 testReturnNotes();
+
+function testGetNoteFromNotepadByID(){
+
+  function FakeNote(description, id){
+    this.description = description;
+    this.id  = id;
+  };
+
+  var notepad = new Notepad();
+  var note1 = new FakeNote("Hi Ellie", 0);
+  var note2 = new FakeNote("Hi Citrus", 1);
+  // notepad.addNote(new FakeNote("Hi Ellie"));
+  // notepad.addNote(new FakeNote("Hi Citrus"));
+  notepad.addNote(note1);
+  notepad.addNote(note2);
+
+  test = notepad.getNoteByID(1);
+
+  assert.isTrue("Gets the note with ID 1", test === note2)
+};
+
+testGetNoteFromNotepadByID();

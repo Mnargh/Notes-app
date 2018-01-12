@@ -3,8 +3,8 @@
     this.currentnote = note;
   };
 
-  SingleNoteView.prototype.ReturnNoteHTML = function(){
-    return '<li>' + this.currentnote.description + '</li>';
+  SingleNoteView.prototype.returnNoteHTML = function(){
+    return '<div>' + this.currentnote.description + '</div>';
   };
 
   exports.SingleNoteView = SingleNoteView;

@@ -7,8 +7,7 @@
     // }
   };
 
-  Notepad.prototype.createNote = function(description){
-    var note = new Note(description);
+  Notepad.prototype.createNote = function(description, note = new Note(description)){
     this.addNote(note);
   };
 
@@ -23,6 +22,17 @@
     // });
     return this.notes;
   };
+
+  Notepad.prototype.getNoteByID = function(IDnumber){
+    return this.notes.find(function(element){
+      return element.id === IDnumber;
+    })
+    // console.log("before");
+    // console.log(arr);
+    // console.log("after");
+    // return arr;
+  };
+
 
   exports.Notepad = Notepad;
 })(this);
