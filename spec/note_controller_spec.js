@@ -30,3 +30,28 @@ function testControllerIsInstantiated(){
 };
 
 testControllerIsInstantiated();
+
+function lasttestmasyougavemeyourstub(){
+  function FakeNotepad(){};
+
+  FakeNotepad.prototype = {
+    // returnNotes: function() {
+    //   // return ["This is note 1"];
+    // }
+  };
+
+  function FakeNoteListView(){};
+
+  FakeNoteListView.prototype = {
+    returnToHTML: function(){
+      return '<div></div>';
+    }
+  };
+
+  var controller = new Controller(new FakeNotepad, new FakeNoteListView);
+  test = document.getElementById("app").innerHTML
+  assert.isTrue("When app loads, the html for an empty note list is displayer",
+test = "<div></div>")
+}
+
+lasttestmasyougavemeyourstub();

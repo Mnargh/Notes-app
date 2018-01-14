@@ -30,37 +30,42 @@ function showNote(noteID) {
   document.getElementById("app").innerHTML = singlenotehtml.returnNoteHTML();
 };
 
-
+function makeNoteLinkClickShowNote(){
+  document.getElementById("text").addEventListener("submit", function(clickEvent) {
+    clickEvent.preventDefault();
+    controller.notepad.createNote(document.getElementById("textArea").value);
+    controller.getHTML("app");
+    document.getElementById("textArea").value = "";
+  });
+};
 
 
 window.onload = function(){
 
 controller = new Controller();
-controller.notepad.createNote("Favourite drink: seltzer");
-controller.notepad.createNote("Pesto");
-controller.getHTML('app');
+// controller.notepad.createNote("Favourite drink: seltzer");
+// controller.notepad.createNote("Pesto");
+// controller.getHTML('app');
 
 makeURLChangeNoteForCurrentPage();
+makeNoteLinkClickShowNote();
 
 };
 
 
-     // makeUrlChangeShowAnimalForCurrentPage();
-     //
-     // function makeUrlChangeShowAnimalForCurrentPage() {
-     //   window.addEventListener("hashchange", showAnimalForCurrentPage);
-     // };
-     //
-     // function showAnimalForCurrentPage() {
-     //   showAnimal(getAnimalFromUrl(window.location));
-     // };
-     //
-     // function getAnimalFromUrl(location) {
-     //   return location.hash.split("#")[1];
-     // };
-     //
-     // function showAnimal(animal) {
-     //   document
-     //     .getElementById("animal")
-     //     .innerHTML = animal;
-     // };
+// makeTigerLinkClickSayTiger();
+//
+// function makeTigerLinkClickSayTiger() {
+//   document
+//     .getElementById("tiger-link")
+//     .addEventListener("click", function(clickEvent) {
+//       clickEvent.preventDefault();
+//       sayTiger();
+//     });
+// };
+//
+// function sayTiger() {
+//   document
+//     .getElementById("animal")
+//     .innerHTML = "tiger";
+// };
